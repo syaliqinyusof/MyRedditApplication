@@ -25,6 +25,20 @@ class ItemViewHolder(var view: View):
         view.tvtotalvote.text = topic.vote.toString()
         view.tv_topic.text = topic.details
 
+        view.img_voting.setOnClickListener {
+            //when user vote type by 1
+            listener.onClick(adapterPosition, topic,1)
+        }
+
+        view.img_unvote.setOnClickListener {//when user unvote type by 0
+            listener.onClick(adapterPosition, topic,0)
+        }
+
+        view.setOnClickListener {
+            listener.onItemClick(adapterPosition, topic)
+
+
+        }
     }
 
 }
