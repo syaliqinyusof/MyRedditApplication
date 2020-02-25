@@ -23,6 +23,7 @@ class ItemViewHolder(var view: View):
 
     fun bindTo(topic: ListData, listener: OnClickListener<ListData>) {
         view.tvtotalvote.text = topic.vote.toString()
+        view.tvtotalUnvote.text = topic.unvote.toString()
         view.tv_topic.text = topic.details
 
         view.img_voting.setOnClickListener {

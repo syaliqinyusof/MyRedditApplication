@@ -81,7 +81,7 @@ class AddTopicFragment  : Fragment() {
                             }
 
                             UNVOTE -> {
-                                TopicArray[pos].vote--
+                                TopicArray[pos].unvote++
                                 adapter.notifyItemChanged(pos)
                             }
 
