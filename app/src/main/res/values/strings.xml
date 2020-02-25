@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">MyRedditApplication</string>
+    <string name="submit">Submit</string>
+    <string name="write_topic">write a topic...</string>
+
     <string name="MMA_fighter">An MMA fighter appearing on Survivor Romania loses a competition then she breaks her teammates nose</string>
     <string name="Trump">Russia is working to get Trump reelected, intelligence officials tell House lawmakers in briefing that angers the president</string>
     <string name="moustache">TIL Salvador Dali once conned Yoko Ono out of $10,000 by sending her a piece of dried grass instead of a hair from his moustache</string>

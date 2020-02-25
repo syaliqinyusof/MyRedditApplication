@@ -1,16 +1,18 @@
 package com.example.myredditapplication.fragment
 
-import android.content.Intent
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.example.myredditapplication.Listener.OnClickListener
 import com.example.myredditapplication.R
 import com.example.myredditapplication.Utils.ObjectData
@@ -18,9 +20,10 @@ import com.example.myredditapplication.adapter.TopicAdapter
 import com.example.myredditapplication.databinding.FragmentAddTopicBinding
 import com.example.myredditapplication.model.ListData
 import com.example.myredditapplication.viewmodel.AddTopicViewModel
+import kotlinx.android.synthetic.main.fragment_write_topic.view.*
 
 
-class AddTopicFragment  : Fragment() {
+class AddTopicFragment  : Fragment()  {
 
     companion object {
         fun newInstance() = AddTopicFragment()
@@ -29,6 +32,7 @@ class AddTopicFragment  : Fragment() {
     private lateinit var viewModel: AddTopicViewModel
     lateinit var dataBinding: FragmentAddTopicBinding
     val TopicArray: ArrayList<ListData> = ArrayList()
+    val TOPIC_DATASET_CHANGED: String? = "com.example.myredditapplication.fragment.TOPIC_DATASET_CHANGED"
     lateinit var adapter: TopicAdapter
     private val VOTE = 1
     private val UNVOTE = 0
@@ -48,11 +52,6 @@ class AddTopicFragment  : Fragment() {
         dataBinding.viewmodel = viewModel
         dataBinding.lifecycleOwner = this
 
-        viewModel.onTopicAdd.observe(viewLifecycleOwner, Observer {
-            val intent = Intent(context, TopicFragment::class.java)
-            startActivity(intent)
-        })
-
         TopicArray.addAll(viewModel.displayTopicArray())
 
         adapter =
@@ -65,7 +64,7 @@ class AddTopicFragment  : Fragment() {
                             putString(ObjectData.Details, detail!!.details)
                         }
                         //navigate to the new fragment to show the topic on another fragment
-//                        findNavController().navigate(R.id.action_mainFragment_to_descriptionFragment, bundle)
+                        findNavController().navigate(R.id.action__topicdescriptionFragment, bundle)
                     }
 
                 }
@@ -96,9 +95,7 @@ class AddTopicFragment  : Fragment() {
 
         dataBinding.recyclerView.layoutManager = LinearLayoutManager(context)
         dataBinding.recyclerView.adapter = adapter
+        (dataBinding.recyclerView.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         dataBinding.recyclerView.setHasFixedSize(true)
     }
-
-
-
 }

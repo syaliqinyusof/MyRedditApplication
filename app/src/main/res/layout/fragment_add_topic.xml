@@ -45,17 +45,20 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:onClick="@{viewmodel::onClickCreateTopic}"
+                app:backgroundTint="@android:color/transparent"
+                app:maxImageSize="40dp"
                 android:src="@drawable/ic_write"
+                app:fabSize="mini"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="15dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
 
-            </ImageView>
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

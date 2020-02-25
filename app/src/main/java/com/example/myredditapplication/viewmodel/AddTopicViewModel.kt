@@ -6,13 +6,14 @@ import androidx.lifecycle.AndroidViewModel
 import com.example.myredditapplication.R
 import com.example.myredditapplication.Utils.SingleLiveEvent
 import com.example.myredditapplication.model.ListData
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class AddTopicViewModel(application: Application) : AndroidViewModel(application) {
-    // TODO: Implement the ViewModel
 
     private val context = getApplication<Application>().applicationContext
 
     val onTopicAdd: SingleLiveEvent<View> = SingleLiveEvent()
+    var getDataList:String? = ""
 
     fun onClickCreateTopic(v: View) {
         onTopicAdd.postValue(v)

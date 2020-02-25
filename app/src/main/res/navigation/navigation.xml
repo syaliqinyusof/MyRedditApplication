@@ -9,6 +9,17 @@
         android:id="@+id/mainFragment"
         android:name="com.example.myredditapplication.fragment.AddTopicFragment"
         android:label="mainFragment" >
+        <action
+            android:id="@+id/action__topicdescriptionFragment"
+            app:destination="@id/descriptionFragment" />
+        
     </fragment>
+
+    <fragment
+        android:id="@+id/descriptionFragment"
+        android:name="com.example.myredditapplication.fragment.TopicFragment"
+        android:label="description_fragment"
+        tools:layout="@layout/fragment_full_details" />
+
 
 </navigation>
