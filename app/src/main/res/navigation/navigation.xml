@@ -12,7 +12,7 @@
         <action
             android:id="@+id/action__topicdescriptionFragment"
             app:destination="@id/descriptionFragment" />
-        
+
     </fragment>
 
     <fragment

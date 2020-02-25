@@ -52,6 +52,37 @@ class AddTopicFragment  : Fragment()  {
         dataBinding.viewmodel = viewModel
         dataBinding.lifecycleOwner = this
 
+        viewModel.onTopicAdd.observe(viewLifecycleOwner, Observer {
+
+//            context?.let {
+//                //navigate to the new fragment to show the topic on another fragment
+//                findNavController().navigate(R.id.action__addnewtopicnFragment)
+//            }
+
+            val builder = AlertDialog.Builder(context)
+            val view = layoutInflater.inflate(R.layout.fragment_write_topic, null)
+            builder.setView(view)
+
+            // set up the ok button
+            builder.setPositiveButton(R.string.submit) { dialog, _ ->
+
+                val topic = view.write_topic.text.toString()
+                if (!topic.isEmpty()){
+                    TopicArray.add(ListData(topic, 0, 0))
+                    Toast.makeText(activity,"heeeyyyy", Toast.LENGTH_SHORT)
+
+                }
+                else{
+                    dialog.dismiss()
+                    Toast.makeText(activity,"noooo", Toast.LENGTH_SHORT)
+                }
+
+            }
+
+            builder.show()
+
+        })
+
         TopicArray.addAll(viewModel.displayTopicArray())
 
         adapter =
